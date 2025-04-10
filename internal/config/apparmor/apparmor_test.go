@@ -3,6 +3,7 @@ package apparmor_test
 import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	runcaa "github.com/opencontainers/runc/libcontainer/apparmor"
 	runtimeapi "k8s.io/cri-api/pkg/apis/runtime/v1"
 
 	"github.com/cri-o/cri-o/internal/config/apparmor"
@@ -16,7 +17,7 @@ var _ = t.Describe("Config", func() {
 		sut = apparmor.New()
 		Expect(sut).NotTo(BeNil())
 
-		if !sut.IsEnabled() {
+		if !runcaa.IsEnabled() {
 			Skip("AppArmor is disabled")
 		}
 	})

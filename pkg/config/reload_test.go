@@ -6,7 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/containers/common/pkg/apparmor"
+	runcaa "github.com/opencontainers/runc/libcontainer/apparmor"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
@@ -314,7 +315,7 @@ var _ = t.Describe("Config", func() {
 
 	t.Describe("ReloadAppArmorProfile", func() {
 		BeforeEach(func() {
-			if !apparmor.IsEnabled() {
+			if !runcaa.IsEnabled() {
 				Skip("AppArmor is disabled")
 			}
 		})
